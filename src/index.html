@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Carpet City</title>
+    <meta name="description" content="Drive a toy car around a 3D town generated from a childhood play-carpet pattern." />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <div id="loading" class="overlay">
+      <div class="panel">
+        <h1>Carpet City</h1>
+        <p id="loading-text">Loading…</p>
+      </div>
+    </div>
+
+    <div id="start-overlay" class="overlay hidden">
+      <div class="panel start-panel" role="dialog" aria-labelledby="start-title" aria-describedby="start-description">
+        <h1 id="start-title">Carpet City</h1>
+        <p id="start-description">Explore your childhood play-carpet town. The roads go on forever!</p>
+        <div class="control-sections">
+          <section class="control-section" aria-labelledby="driving-title">
+            <h2 id="driving-title">Driving</h2>
+            <dl class="keys">
+              <dt><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></dt><dd>Drive <span class="control-note">or use arrow keys</span></dd>
+              <dt><kbd>R</kbd></dt><dd>Back to the road</dd>
+            </dl>
+          </section>
+          <section class="control-section" aria-labelledby="camera-title">
+            <h2 id="camera-title">Camera</h2>
+            <dl class="keys">
+              <dt>Mouse</dt><dd>Look around</dd>
+              <dt>Wheel</dt><dd>Zoom in / out</dd>
+              <dt><kbd>C</kbd></dt><dd>Reset camera</dd>
+              <dt><kbd>V</kbd></dt><dd>Bird's-eye view</dd>
+            </dl>
+          </section>
+          <section class="control-section control-shortcuts" aria-labelledby="shortcuts-title">
+            <h2 id="shortcuts-title">Shortcuts</h2>
+            <dl class="keys">
+              <dt><kbd>H</kbd></dt><dd>Toggle help</dd>
+              <dt><kbd>M</kbd></dt><dd>Toggle minimap</dd>
+              <dt><kbd>F</kbd></dt><dd>Toggle fullscreen</dd>
+            </dl>
+          </section>
+        </div>
+        <button id="start-button" type="button">Start driving</button>
+      </div>
+    </div>
+
+    <div id="touch-controls" aria-label="Touch controls">
+      <div class="touch-toolbar" role="group" aria-label="Game actions">
+        <button type="button" data-action="KeyR" aria-label="Back to the road">Recover</button>
+        <button type="button" data-action="KeyC" aria-label="Reset camera">Camera</button>
+        <button type="button" data-action="KeyV" aria-label="Toggle bird's-eye view">View</button>
+        <button type="button" data-action="KeyM" aria-label="Toggle minimap">Map</button>
+        <button type="button" data-action="KeyF" aria-label="Toggle fullscreen" aria-pressed="false">Full</button>
+      </div>
+      <div class="touch-steering" role="group" aria-label="Steering">
+        <button type="button" data-drive="left" aria-label="Steer left" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12 19 3v18z" /></svg></button>
+        <button type="button" data-drive="right" aria-label="Steer right" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12 5 3v18z" /></svg></button>
+      </div>
+      <div class="touch-pedals" role="group" aria-label="Pedals">
+        <div>
+          <button type="button" data-drive="backward" aria-label="Brake or reverse" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19 3 5h18z" /></svg></button>
+          <button type="button" data-drive="forward" aria-label="Accelerate" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5 3 19h18z" /></svg></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="hud">
+      <div id="title">Carpet City</div>
+      <div id="speedometer"><span id="speed-value">0</span><span class="unit">km/h</span><div id="odometer">0.00 km</div></div>
+      <div id="surface"></div>
+      <canvas id="minimap" width="200" height="200"></canvas>
+      <div id="help">
+        <b>Controls</b><br />
+        WASD / arrows: drive<br />
+        Mouse: look · Wheel: zoom · R: back to road<br />
+        C: reset camera · V: bird's-eye · M: minimap<br />
+        F: fullscreen · H: hide help
+      </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>

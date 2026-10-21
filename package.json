@@ -1,0 +1,25 @@
+{
+  "name": "carpet-city",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Open-world driving game set in a 3D world generated from a childhood play-carpet pattern.",
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsc --noEmit && node tools/build.mjs",
+    "dev": "node tools/build.mjs --serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kovacsv/CarpetCity.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  }
+}
