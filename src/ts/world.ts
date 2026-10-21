@@ -724,9 +724,12 @@ function fireTruck(pb: PartBuilder): void {
 function plane(pb: PartBuilder, cols: TiledColliders): void {
   // Local +z is the nose. The carpet shows a red airliner with white wings.
   pb.cylinderZ(0, 1.8, 0, 0.75, 0.75, 7.0, C.red, 16);
-  pb.sphere(0, 1.8, 3.5, 0.75, C.red, 1, 1, 1.4, 2);
-  pb.add(new THREE.ConeGeometry(0.75, 2.2, 16), C.red, local(0, 1.95, -4.6).multiply(new THREE.Matrix4().makeRotationX(-Math.PI / 2 - 0.12)));
-  pb.box(0, 2.15, 3.5, 0.9, 0.3, 0.8, '#203760');
+  pb.sphere(0, 1.8, -3.5, 0.75, C.red, 1, 1, 1.4, 2);
+  pb.add(new THREE.ConeGeometry(0.75, 2.2, 16), C.red, local(0, 1.8, 4.6).multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2)));
+  // One curved windshield wrapping over the top of the nose cone.
+  const noseRadius = (z: number) => 0.75 * (1 - (z - 3.5) / 2.2) + 0.03;
+  const windshield = new THREE.CylinderGeometry(noseRadius(4.25), noseRadius(3.7), 0.55, 12, 1, true, Math.PI - 0.9, 1.8);
+  pb.add(windshield, '#203760', local(0, 1.8, 3.975).multiply(new THREE.Matrix4().makeRotationX(Math.PI / 2)));
   for (let z = -2.6; z <= 2.6; z += 0.6) {
     for (const s of [-1, 1]) pb.box(s * 0.74, 2.05, z, 0.04, 0.22, 0.3, C.white);
   }
@@ -737,9 +740,9 @@ function plane(pb: PartBuilder, cols: TiledColliders): void {
     pb.cylinderZ(s * 2.4, 0.95, 1.36, 0.28, 0.28, 0.04, C.black, 12);
     pb.box(s * 4.6, 1.35, 0.2, 0.8, 0.14, 1.6, C.red);
   }
-  pb.box(0, 2.3, -5.0, 3.6, 0.1, 1.0, C.white);
-  pb.box(0, 3.0, -5.1, 0.12, 1.6, 1.2, C.white);
-  pb.box(0, 3.5, -5.15, 0.14, 0.4, 1.0, C.red);
+  pb.box(0, 2.3, -4.35, 3.6, 0.1, 1.3, C.white);
+  pb.box(0, 3.0, -4.35, 0.12, 1.6, 1.4, C.white);
+  pb.box(0, 3.5, -4.4, 0.14, 0.4, 1.2, C.red);
   // Landing gear.
   pb.cylinder(0, 0, 2.6, 0.06, 0.06, 1.1, C.darkGrey, 6);
   pb.cylinderX(0, 0.25, 2.6, 0.25, 0.2, C.black, 10);
