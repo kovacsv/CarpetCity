@@ -2,7 +2,7 @@
 
 Carpet City is a driving game where you explore a 3D world built inspired from the classic play rug. Relive the childhood nostalgia with this interactive experience as you navigate familiar roads, town loops, and buildings.
 
-🚗 [Play Carpet City in your browser](https://vkovacs.github.io/CarpetCity)
+🚗 [Play Carpet City in your browser.](https://kovacsv.github.io/CarpetCity)
 
 <table width="100%">
   <tr>
